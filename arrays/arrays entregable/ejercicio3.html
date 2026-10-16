@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+    <h2>Map inicial</h2>
+    <ul id="listaInicial"></ul>
+
+    <h2>Map tras actualizar la edad de Ana</h2>
+    <ul id="listaFinal"></ul>
+
+    <script>
+        // Función que pinta un Map dentro de una <ul>
+        function mostrarMapEnLista(mapa, idLista) {
+            let ul = document.getElementById(idLista);
+            ul.innerHTML = "";
+
+            mapa.forEach((edad, nombre) => {
+                let li = document.createElement("li");
+                li.textContent = `${nombre} - Edad: ${edad}`;
+                ul.appendChild(li);
+            });
+        }
+
+        // Crear el Map (nombre -> edad)
+        let personas = new Map();
+
+        // Agregar nombres y edades
+        personas.set("Nacho", 40);
+        personas.set("Ana", 35);
+        personas.set("Mario", 15);
+        personas.set("Laura", 17);
+
+        mostrarMapEnLista(personas, "listaInicial");
+
+        // Actualizar la edad de Ana (set sobre una clave existente sobrescribe el valor)
+        personas.set("Ana", 36);
+
+        mostrarMapEnLista(personas, "listaFinal");
+    </script>
+</body>
+</html>

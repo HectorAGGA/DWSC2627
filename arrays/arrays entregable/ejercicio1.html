@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <h2>Array con los nuevos elementos</h2>
+    <ul id="listaOriginal"></ul>
+
+    <h2>Ordenado por edad</h2>
+    <ul id="listaEdad"></ul>
+
+    <h2>Ordenado por nombre</h2>
+    <ul id="listaNombre"></ul>
+
+    <h2>Mayores de 30 años</h2>
+    <ul id="listaMayores"></ul>
+
+    <script>
+        // Función que pinta un array dentro de una <ul>
+        function mostrarEnLista(array, idLista) {
+            let ul = document.getElementById(idLista);
+            ul.innerHTML = "";
+
+            array.forEach(persona => {
+                let li = document.createElement("li");
+                li.textContent = `${persona.nombre} - Teléfono: ${persona.tlf} - Edad: ${persona.edad}`;
+                ul.appendChild(li);
+            });
+        }
+
+        // a) Crear el array
+        let data = [
+            {nombre: "Nacho", tlf: "966112233", edad: 40},
+            {nombre: "Ana", tlf: "911223344", edad: 35},
+            {nombre: "Mario", tlf: "611998877", edad: 15},
+            {nombre: "Laura", tlf: "633663366", edad: 17}
+        ];
+
+        // b) Añadir dos elementos al final
+        data.push(
+            {nombre: "Pedro", tlf: "611944444", edad: 25},
+            {nombre: "Julia", tlf: "633232323", edad: 37}
+        );
+
+        // c) Comprobar que se han añadido
+        mostrarEnLista(data, "listaOriginal");
+
+        // d) Ordenar por edad (de menor a mayor)
+        data.sort((a, b) => a.edad - b.edad);
+        mostrarEnLista(data, "listaEdad");
+
+        // e) Ordenar por nombre (alfabéticamente)
+        data.sort((a, b) => a.nombre.localeCompare(b.nombre));
+        mostrarEnLista(data, "listaNombre");
+
+        // f) Nuevo vector solo con los mayores de 30 años
+        let mayoresDe30 = data.filter(persona => persona.edad > 30);
+        mostrarEnLista(mayoresDe30, "listaMayores");
+    </script>
+</body>
+</html>

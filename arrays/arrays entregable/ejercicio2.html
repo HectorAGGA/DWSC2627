@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+    <h2>Array original (con duplicados)</h2>
+    <ul id="listaOriginal"></ul>
+
+    <h2>Array con números únicos</h2>
+    <ul id="listaUnicos"></ul>
+
+    <script>
+        // Función que pinta un array dentro de una <ul>
+        function mostrarEnLista(array, idLista) {
+            let ul = document.getElementById(idLista);
+            ul.innerHTML = "";
+
+            array.forEach(numero => {
+                let li = document.createElement("li");
+                li.textContent = numero;
+                ul.appendChild(li);
+            });
+        }
+
+        // Array con números duplicados
+        let valores = [5, 3, 8, 3, 1, 5, 9, 8, 2, 1, 7, 9];
+
+        // Set elimina los duplicados; con el spread (...) lo convertimos de nuevo en array
+        let unicos = [...new Set(valores)];
+
+        mostrarEnLista(valores, "listaOriginal");
+        mostrarEnLista(unicos, "listaUnicos");
+    </script>
+</body>
+</html>
